@@ -10,7 +10,6 @@ namespace RPSLS
     {
         //member variables
         public string name;
-        public int score;
         public int gesture;
         string[] gestureArray = new string[2];
         public List<string> gestureOptions = new List<string>() { "rock", "paper", "scissors", "lizard", "Spock" };

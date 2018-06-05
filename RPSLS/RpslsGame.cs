@@ -14,7 +14,6 @@ namespace RPSLS
         public int player1Score = 0;
         public int player2Score = 0;
 
-
         //constructor
         public RpslsGame()
         {
@@ -22,7 +21,7 @@ namespace RPSLS
         }
 
         //member methods
-        public void SetPlayers()
+        public void RunGame()
         {
             Console.WriteLine("How many players will be playing? Enter 1 or 2. If 1, an opponent will be assigned.");
             string numberOfPlayers = Console.ReadLine();
@@ -46,14 +45,24 @@ namespace RPSLS
             {
                 Console.WriteLine("Invalid response. Please press any key to continue.");
                 Console.ReadLine();
-                SetPlayers();
             }
         }
         public void GetPlayerName()
         {
 
         }
-        public void ChooseGesture()
+        public void PlayRounds()
+        {
+            while (player1Score <= 2 && player2Score <= 2)
+            {
+                ChooseGesture();
+                CompareGestures();
+                CheckScore();
+            }
+        }
+        
+
+    public void ChooseGesture()
         {
             player1.gesture = player1.ChooseGesture();
             player2.gesture = player2.ChooseGesture();
@@ -65,16 +74,12 @@ namespace RPSLS
             {
                 Console.WriteLine("It's a tie! Press any key to continue.");
                 Console.ReadLine();
-                CheckScore();
-                NextRound();
             }
             else if (player1.gesture == 1 && player2.gesture == 2 || player1.gesture == 1 && player2.gesture == 5)
             {
                 Console.WriteLine(player2.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player2Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 1 && player2.gesture == 3 || player1.gesture == 1 && player2.gesture == 4)
@@ -82,8 +87,6 @@ namespace RPSLS
                 Console.WriteLine(player1.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player1Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 2 && player2.gesture == 3 || player1.gesture == 2 && player2.gesture == 4)
@@ -91,8 +94,6 @@ namespace RPSLS
                 Console.WriteLine(player2.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player2Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 2 && player2.gesture == 1 || player1.gesture == 2 && player2.gesture == 5)
@@ -100,17 +101,12 @@ namespace RPSLS
                 Console.WriteLine(player1.name + " wins! Press any ky to continue.");
                 Console.ReadLine();
                 player1Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 3 && player2.gesture == 1 || player1.gesture == 3 && player2.gesture == 5)
-            {
-                Console.WriteLine(player2.name + " wins! Press any key to continue.");
+            {   Console.WriteLine(player2.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player2Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 3 && player2.gesture == 2 || player1.gesture == 3 && player2.gesture == 4)
@@ -118,8 +114,6 @@ namespace RPSLS
                 Console.WriteLine(player1.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player1Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 4 && player2.gesture == 1 || player1.gesture == 4 && player2.gesture == 3)
@@ -127,8 +121,6 @@ namespace RPSLS
                 Console.WriteLine(player2.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player2Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 4 && player2.gesture == 2 || player1.gesture == 4 && player2.gesture == 5)
@@ -136,8 +128,6 @@ namespace RPSLS
                 Console.WriteLine(player1.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player1Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 5 && player2.gesture == 2 || player1.gesture == 5 && player2.gesture == 4)
@@ -145,8 +135,6 @@ namespace RPSLS
                 Console.WriteLine(player2.name + " wins! Press any key to continue.");
                 Console.ReadLine();
                 player2Score++;
-                CheckScore();
-                NextRound();
             }
 
             else if (player1.gesture == 5 && player2.gesture == 1 || player1.gesture == 5 && player2.gesture == 3)
@@ -154,26 +142,29 @@ namespace RPSLS
                 Console.WriteLine(player1.name + " wins!Press any key to continue.");
                 Console.ReadLine();
                 player1Score++;
-                CheckScore();
-                NextRound();
-            }
-
-            else
-            {
-                Console.WriteLine("Selection not valid. Press any key to try again.");
-                Console.ReadLine();
-                NextRound();
             }
         }
         public void CheckScore()
         {
-
+            if (player1Score <= 2 && player2Score <= 2)
+            {
+                Console.WriteLine("No one has won the game yet. Press any key to play another round.");
+                Console.ReadLine();
+            }
+            else if (player1Score == 3)
+            {
+                Console.WriteLine(player1.name + " wins the game! Press any key to start a new game.");
+                Console.ReadLine();
+            }
+            else if (player2Score == 3)
+            {
+                Console.WriteLine(player2.name + " wins the game! Press any key to start a new game.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry. Press any ket to continue.");
+            }
         }
-
-        public void NextRound()
-        {
-
-        }
-
     }
 }
