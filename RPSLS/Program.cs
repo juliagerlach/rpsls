@@ -11,12 +11,9 @@ namespace RPSLS
         static void Main(string[] args)
         {
             RpslsGame myRpslsGame = new RpslsGame();
+            myRpslsGame.Introduction();
             myRpslsGame.RunGame();
             myRpslsGame.PlayRounds();
-
-            //myRpslsGame.player1.InterpretGestures();
-            //myRpslsGame.player2.InterpretGestures();
-
         }
     }
 }

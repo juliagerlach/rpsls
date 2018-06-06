@@ -16,7 +16,7 @@ namespace RPSLS
         public override void GetPlayerName()
         {
             
-            Console.WriteLine("Please enter your name.");
+            Console.WriteLine("Please enter your name and then press 'enter.'");
             name = Console.ReadLine();
             
         }
@@ -24,7 +24,7 @@ namespace RPSLS
         public override int ChooseGesture()
         {
 
-            Console.WriteLine("Please enter your selected gesture: Type 1 for 'rock', 2 for 'paper', 3 for 'scissors', 4 for 'lizard', or 5 for 'Spock.'");
+            Console.WriteLine(name + ", please enter your selected gesture: Type 1 for 'rock', 2 for 'paper', 3 for 'scissors', 4 for 'lizard', or 5 for 'Spock.', and then press enter");
             gesture = Convert.ToInt32(Console.ReadLine());
 
             return gesture;

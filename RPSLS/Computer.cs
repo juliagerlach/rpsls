@@ -11,10 +11,10 @@ namespace RPSLS
         public override void GetPlayerName()
         {
             name = "Carnak";
-            Console.WriteLine($"{name} the computer is your opponent. Press any key to continue");
+            Console.WriteLine($"{name} the computer is your opponent. Press 'enter' to continue");
             Console.ReadLine();
         }
-        //constructor
+
         public override int ChooseGesture()
         {
             Random random = new Random();
